@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use('/public', express.static('public'));
-
 app.use(router)
 
 app.listen(3000, () => {

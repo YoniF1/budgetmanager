@@ -15,27 +15,8 @@ exports.seed = async function(knex) {
     {id: 1, chat_id: 1, name: 'Yonatan F', email: 'yoni@email.com', password: hash, phone_number: '0531234567', number_of_people: 1, country: 'Israel', monthly_income: 20000},
     {id: 2, chat_id: 2, name: 'Daniel H', email: 'daniel@email.com', password: hash, phone_number: '0531234568', number_of_people: 3, country: 'Israel', monthly_income: 22000},
     {id: 3, chat_id: 3, name: 'Kseniia T', email: 'kseniia@email.com', password: hash, phone_number: '0531234569', number_of_people: 4, country: 'Israel', monthly_income: 21000},
-    {id: 4, chat_id: 5659255263, name: 'Steven Bloggs', email: 'steven@email.com', password: hash, phone_number: '0531234564', number_of_people: 4, country: 'Israel', monthly_income: 24000},
   ]);
 
-
-  await knex('categories').insert([
-    {id: 1, name: 'Housing'},
-    {id: 2, name: 'Food'},
-    {id: 3, name: 'Transportation'},
-    {id: 4, name: 'Healthcare'},
-    {id: 5, name: 'Entertainment'},
-    {id: 6, name: 'Childcare/Education'},
-    {id: 7, name: 'Debt Payments'},
-    {id: 8, name: 'Personal Care'},
-    {id: 9, name: 'Utilities'},
-    {id: 10, name: 'Miscellaneous'},
-    {id: 11, name: 'Taxes'},
-    {id: 12, name: 'Insurance'},
-    {id: 13, name: 'Gifts/Donations'},
-    {id: 14, name: 'Clothing'},
-    {id: 15, name: 'Savings/Investments'}
-  ]);
 
   await knex('expenses').insert([
     {id: 1, user_id: 1, category_id: 2, amount: 30.5 },
@@ -60,12 +41,31 @@ exports.seed = async function(knex) {
     {id: 20, user_id: 3, category_id: 9, amount: 13.40 },
     {id: 21, user_id: 3, category_id: 8, amount: 44.30 },
     {id: 22, user_id: 3, category_id: 7, amount: 12.00 },
-    {user_id: 3, category_id: 6, amount: 12.00 },
-    {user_id: 3, category_id: 10, amount: 13.00 },
-    {user_id: 3, category_id: 11, amount: 14.00 },
-    {user_id: 3, category_id: 12, amount: 15.00 },
-    {user_id: 3, category_id: 13, amount: 16.00 },
-    {user_id: 3, category_id: 14, amount: 17.00 },
-    {user_id: 3, category_id: 15, amount: 18.00 },
+    {id: 23, user_id: 3, category_id: 6, amount: 12.00 },
+    {id: 24, user_id: 3, category_id: 10, amount: 13.00 },
+    {id: 25, user_id: 3, category_id: 11, amount: 14.00 },
+    {id: 26, user_id: 3, category_id: 12, amount: 15.00 },
+    {id: 27, user_id: 3, category_id: 13, amount: 16.00 },
+    {id: 28, user_id: 3, category_id: 14, amount: 17.00 },
+    {id: 29, user_id: 3, category_id: 15, amount: 18.00 },
   ]);
+
+  await knex('categories').insert([
+    {name: 'Housing'},
+    {name: 'Food'},
+    {name: 'Transportation'},
+    {name: 'Healthcare'},
+    {name: 'Entertainment'},
+    {name: 'Childcare/Education'},
+    {name: 'Debt Payments'},
+    {name: 'Personal Care'},
+    {name: 'Utilities'},
+    {name: 'Miscellaneous'},
+    {name: 'Taxes'},
+    {name: 'Insurance'},
+    {name: 'Gifts/Donations'},
+    {name: 'Clothing'},
+    {name: 'Savings/Investments'}
+  ]);
+
 }
