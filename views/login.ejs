@@ -44,6 +44,12 @@
             font-size: 24px;
         }
 
+        .unsuccessful-message {
+            color: red;
+            padding-top: 10px;
+            font-size: 24px;
+        }
+
     </style>
 </head>
 <body>
@@ -72,8 +78,9 @@
     </nav>
 
     <main class="container">
-        <h1>Login</h1>
         <form action="/login" method="POST">    
+            <h1>Login</h1>
+
             <label for="email">Email</label><br>
             <input type="text" id="email" name="email"><br>
             
@@ -84,7 +91,7 @@
             <button type="submit">Login</button>
 
             <% if (message) { %>
-                <p><%= message %></p>
+                <p class="unsuccessful-message"><%= message %></class=>
             <% } %>
 
             <% if (success) { %>

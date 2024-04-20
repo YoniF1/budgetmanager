@@ -12,7 +12,8 @@ router.post('/login', loginUser);
 router.get('/home', (req, res) => {
   const isLoggedIn = req.session.userId !== undefined;
 
-  res.render('home', { message: req.session.message, isLoggedIn, details: req.session.details});
+
+  res.render('home', { message: req.session.message, isLoggedIn, details: req.session.details, user_details_completed: ''});
 });
 
 router.post('/home', createUserDetails)

@@ -67,14 +67,10 @@
 
     <aside class="welcome-message">
         <%= message %>
-
-        <% if(!details) { %>
-            <%= details %>
-        <% } %>
     </aside>
 
     <main class="container">
-        <% if(!details) { %>
+        <% if(!user_details_completed) { %>
               <h1>Add details to your profile</h1>
 
               <form action="/home" method="POST">
@@ -91,12 +87,14 @@
               </form>
         <% } %>
         
-        <!-- <div class="elfsight-app-af09a7a5-d4f5-43e9-8c46-464699fcba88" data-elfsight-app-lazy></div> -->
+        <% if(user_details_completed) { %>
+          <div class="elfsight-app-af09a7a5-d4f5-43e9-8c46-464699fcba88" data-elfsight-app-lazy></div>
+        <% } %>
 
         
     </main>
-    <!-- <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script> -->
-    <!-- if they have filled in their details - they can add an expense -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

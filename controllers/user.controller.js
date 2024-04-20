@@ -17,11 +17,11 @@ const loginUser = (req, res) => {
     .then((userId) => {
         if (userId) {
             req.session.userId = userId;
-            req.session.message = `Welcome to Moses the Money Manager ${nameOfUser}!`;
+            req.session.message = `Welcome to Moses the Money Manager \n ${nameOfUser}!`;
             req.session.details = `Please add your details`;
             res.redirect('/home');
         } else {
-            res.render('login', { message: 'You are not registered or password is invalid', success: '' });
+            res.render('login', { message: 'You are not registered or password is invalid', success: '', isLoggedIn: false });
         }
     })
     .catch((error) => { 
@@ -69,8 +69,8 @@ const createUserDetails = async (req, res) => {
         
         await _createUserDetails(req.session.userId, phone_number, country, monthly_income)
         const isLoggedIn = req.session.userId !== undefined;
-
-        return res.render('home', { success: '', message: '', isLoggedIn, details: 'User details created'});
+        req.session.details = 'details created'
+        return res.render('home', { success: '', message: '', isLoggedIn, details: req.session.details, user_details_completed: 'User details created'});
     } catch (e) {
         console.log(e)
         return res.status(500).send('Error creating user details.');

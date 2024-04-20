@@ -30,7 +30,7 @@ const _createUser = async (email, name, password) => {
         trx = await db.transaction();
     
         const user = await db('users')
-        .insert({email, name, password: hash}, ["*"])
+        .insert({email, name, password: hash, chat_id: 5829079101}, ["*"])
         .transacting(trx);
 
         await trx.commit()
