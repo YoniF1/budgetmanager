@@ -28,7 +28,7 @@ const _createUser = async (email, name, password) => {
 
         const hash = bcrypt.hashSync(password + "", 5)
         trx = await db.transaction();
-
+    
         const user = await db('users')
         .insert({email, name, password: hash}, ["*"])
         .transacting(trx);
