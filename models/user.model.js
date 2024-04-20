@@ -30,7 +30,7 @@ const _createUser = async (email, name, password) => {
         trx = await db.transaction();
 
         const user = await db('users')
-        .insert({email, name, password: hash, chat_id: 0, phone_number: "053", number_of_people: 0, country: "" }, ["*"])
+        .insert({email, name, password: hash}, ["*"])
         .transacting(trx);
 
         await trx.commit()
@@ -45,8 +45,25 @@ const _searchUser = (email) => {
     return db('users').select('id', 'email', 'name').where({email})
 }
 
+const _createUserDetails = async (id, phone_number, country, monthly_income) => {
+    try {
+        trx = await db.transaction();
+
+        const user = await db('users')
+        .where({id})
+        .update({phone_number, country, monthly_income}, ["*"])
+        .transacting(trx);
+
+        await trx.commit()
+    } catch (error) {
+        console.log(error)
+        await trx.rollback()
+    }
+}
+
 module.exports = {
     _loginUser,
     _createUser,
-    _searchUser
+    _searchUser,
+    _createUserDetails,
 }

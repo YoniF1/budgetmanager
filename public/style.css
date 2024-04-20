@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    min-height: 100vh;
+    height: auto;
+}
+
+.position-telegram {
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    width: 30vw;
+}

@@ -1,4 +1,4 @@
-const { _loginUser, _searchUser, _createUser } = require('../models/user.model.js');
+const { _loginUser, _searchUser, _createUser, _createUserDetails } = require('../models/user.model.js');
 
 const loginUser = (req, res) => {
     const { email, password } = req.body
@@ -11,7 +11,8 @@ const loginUser = (req, res) => {
     .then((userId) => {
         if (userId) {
             req.session.userId = userId;
-            req.session.message = `Welcome back again ${email}!`;
+            req.session.message = `Welcome back again ${email}!`
+            req.session.details = `Please add your details`
 
             res.redirect('/home')
         } else {
@@ -55,7 +56,23 @@ const createUser = async (req, res) => {
     }
 }
 
+const createUserDetails = async (req, res) => {
+    const { phone_number, country, monthly_income } = req.body 
+
+    try {
+        
+        await _createUserDetails(req.session.userId, phone_number, country, monthly_income)
+        const isLoggedIn = req.session.userId !== undefined;
+
+        return res.render('home', { success: '', message: '', isLoggedIn, details: 'User details created'});
+    } catch (e) {
+        console.log(e)
+        return res.status(500).send('Error creating user details.');
+    }
+}
+
 module.exports = {
     loginUser,
-    createUser
+    createUser,
+    createUserDetails
 }

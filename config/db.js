@@ -18,8 +18,6 @@ const db = knex({
         connectionString: connectionString
 }});
 
-
-
 module.exports = {
     db
 }
