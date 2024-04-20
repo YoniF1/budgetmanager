@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginUser, createUser } = require('../controllers/user.controller.js');
+const { loginUser, createUser, createUserDetails } = require('../controllers/user.controller.js');
 const router = express.Router();
 
 router.get('/login', (req, res) => {
@@ -10,8 +10,11 @@ router.post('/login', loginUser);
 router.get('/home', (req, res) => {
   const isLoggedIn = req.session.userId !== undefined;
 
-  res.render('home', { message: req.session.message, isLoggedIn});
+  res.render('home', { message: req.session.message, isLoggedIn, details: req.session.message});
 });
+
+router.post('/home', createUserDetails)
+
 router.get('/signup', (req, res) => {
   res.render('signup', { error: '', user_exists: '', success: '' });
 });
