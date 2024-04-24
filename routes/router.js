@@ -1,6 +1,10 @@
 const express = require('express');
 const { loginUser, createUser, createUserDetails } = require('../controllers/user.controller.js');
+const { getAmount, getAdvice } = require ("../controllers/hackcontrol.js");
 const router = express.Router();
+
+router.get("/advice/:id", getAdvice);
+router.get("/amounts/:id", getAmount);
 
 router.get('/login', (req, res) => {
   const isLoggedIn = req.session.userId !== undefined
