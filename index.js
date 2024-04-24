@@ -81,7 +81,7 @@ bot.onText(/\/free/, (message) => {
 
 bot.onText(/\/analyse/, async (message) => {
   const userId = await _getUserId(message.chat.id);
-  const link = `http://localhost/3000/public?id=${userId}`;
+  const link = `http://localhost:3000/public?id=${userId}`;
   bot.sendMessage(message.chat.id, link);
 });
 
