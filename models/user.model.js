@@ -42,7 +42,7 @@ const _createUser = async (email, name, password) => {
 }
 
 const _searchUser = (email) => {
-    return db('users').select('id', 'email', 'name').where({email})
+    return db('users').select('id', 'email', 'name', 'phone_number', 'monthly_income', 'country').where({email})
 }
 
 const _createUserDetails = async (id, phone_number, country, monthly_income) => {

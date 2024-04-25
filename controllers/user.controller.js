@@ -8,10 +8,16 @@ const loginUser = (req, res) => {
     }
 
     let nameOfUser;
+    let user_details_completed;
 
     _searchUser(email)
     .then((user) => {
         nameOfUser = user[0].name;
+        console.log(user[0])
+        if(user[0].phone_number && user[0].country && user[0].monthly_income) {
+            console.log(user[0])
+            user_details_completed = true
+        }
         return _loginUser(email, password)
     })
     .then((userId) => {
@@ -19,6 +25,7 @@ const loginUser = (req, res) => {
             req.session.userId = userId;
             req.session.message = `Welcome to Moses the Money Manager \n ${nameOfUser}!`;
             req.session.details = `Please add your details`;
+            req.session.completed = user_details_completed
             res.redirect('/home');
         } else {
             res.render('login', { message: 'You are not registered or password is invalid', success: '', isLoggedIn: false });
