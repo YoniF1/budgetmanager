@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { TOKEN } = process.env;
 const TelegramBot = require("node-telegram-bot-api");
-const { _createExpense } = require("./models/bot.models.js");
+const { _createExpense, _getUserId } = require("./models/bot.models.js");
 const { chatGptResponse } = require("./chatgpt.js");
 const bot = new TelegramBot(TOKEN, { polling: true });
 const categories = [
@@ -42,7 +42,7 @@ const sendCategorySelection = (chatId) => {
 bot.onText(/\/start/, (message) => {
   bot.sendMessage(
     message.chat.id,
-    "Welcome to Moses the Money Manager! Here you will record your daily expenses, and they will be recorded on your account. Choose /log to select spending categories, or /free to type in text which I will interpret!"
+    "Welcome to Moses the Money Manager! Here you will record your daily expenses, and they will be recorded on your account. Choose /log to select spending categories, or /free to type in text which I will interpret! Once you've finished, type /analyse to get to your analysis."
   );
 });
 bot.onText(/\/log/, (message) => {
@@ -78,6 +78,13 @@ bot.onText(/\/free/, (message) => {
       });
     });
 });
+
+bot.onText(/\/analyse/, async (message) => {
+  const userId = await _getUserId(message.chat.id);
+  const link = `http://localhost:3000/public?id=${userId}`;
+  bot.sendMessage(message.chat.id, link);
+});
+
 bot.on("callback_query", (callbackQuery) => {
   const message = callbackQuery.message;
   const category = JSON.parse(callbackQuery.data).category;
