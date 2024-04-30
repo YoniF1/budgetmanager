@@ -1,0 +1,17 @@
+
+Student: Daniel H, Kseniia T, Yonatan F
+Project: Pocket Budget Manager
+
+The project demonstrates proficiency in building a Telegram bot-based budget management system.
+Notably, the project effectively utilizes Telegram Bot API for interaction, OpenAI's GPT for natural language understanding, and PostgreSQL for data storage.
+However, consider improving the error handling mechanism and adding more detailed documentation for better understanding and maintenance.
+Telegram Bot Integration: 9/10
+Natural Language Understanding: 8/10
+Database Integration: 9/10
+Error Handling: 7/10
+
+Overall: 8.25/10
+
+The Pocket Budget Manager developed by Daniel H, Kseniia T, and Yonatan F showcases strong proficiency in leveraging Telegram Bot API, OpenAI's GPT, and PostgreSQL to create a user-friendly budget management system. The implementation of bot commands for logging expenses and interpreting free-text expenses is well done, earning it a commendable score. Additionally, the integration with PostgreSQL for data storage and retrieval is effective and shows a good understanding of database interaction within the bot framework.
+
+One of the notable strengths of the project is its innovative use of OpenAI's GPT for natural language understanding, allowing users to input expenses in free language format. This feature enhances user experience and demonstrates creativity in utilizing AI technology for financial applications.
